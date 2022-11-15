@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.activity_item_list.*
@@ -23,12 +24,44 @@ class ItemListActivity : AppCompatActivity() {
     setSupportActionBar(toolbar)
     toolbar.title = title
 
-    fab.setOnClickListener { view ->
-      Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-          .setAction("Action", null).show()
+    fab.setOnClickListener {
+      val intent = Intent(this, ItemAddActivity::class.java)
+      startActivity(intent)
     }
 
     setupRecyclerView(item_list)
+
+    ItemTouchHelper(object : ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.RIGHT) {
+      override fun onMove(
+        recyclerView: RecyclerView,
+        viewHolder: RecyclerView.ViewHolder,
+        target: RecyclerView.ViewHolder
+      ): Boolean {
+        return false
+      }
+
+      override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
+        // this method is called when we swipe our item to right direction.
+        // on below line we are getting the item at a particular position.
+        val deletedStock: DummyContent.Stock =
+          DummyContent.ITEMS.get(viewHolder.adapterPosition)
+        val intent = Intent(viewHolder.itemView.context, ItemRemoveActivity::class.java).apply{
+          putExtra(ItemRemoveActivity.ARG_ITEM_SYMB, deletedStock.symbol)
+        }
+        startActivity(intent)
+        item_list.adapter?.notifyItemRemoved(viewHolder.adapterPosition)
+
+      }
+
+    }).attachToRecyclerView(item_list)
+
+  }
+
+
+
+  override fun onResume() {
+    super.onResume()
+    item_list.adapter?.notifyDataSetChanged()
   }
 
   private fun setupRecyclerView(recyclerView: RecyclerView) {
@@ -56,8 +89,8 @@ class ItemListActivity : AppCompatActivity() {
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
       val item = values[position]
       holder.symbView.text = item.symbol
-      holder.sellView.text = item.sell_price.toString()
-      holder.buyView.text = item.buy_price.toString()
+      holder.sellView.text = "S:"+ item.sell_price.toString()
+      holder.buyView.text = "B: "+ item.buy_price.toString()
 
       with(holder.itemView) {
         tag = item

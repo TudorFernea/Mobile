@@ -37,63 +37,56 @@
     </com.google.android.material.appbar.AppBarLayout>
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/tvUpdate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:text="Add a stock"
+        android:text="Update"
+        android:textAlignment="center"
         android:textSize="30sp"
         app:layout_anchorGravity="center"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/app_bar" />
 
-    <EditText
-        android:id="@+id/edSymbol"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="16dp"
-        android:hint="Enter symbol"
-        app:layout_constraintTop_toBottomOf="@+id/textView"
-        tools:layout_editor_absoluteX="16dp" />
 
     <EditText
-        android:id="@+id/edDesc"
+        android:id="@+id/edUpdDesc"
         android:layout_width="match_parent"
         android:layout_height="56dp"
         android:layout_margin="16dp"
         android:hint="Enter description"
-        app:layout_constraintTop_toBottomOf="@+id/edSymbol"
+        app:layout_constraintTop_toBottomOf="@+id/tvUpdate"
         tools:layout_editor_absoluteX="16dp" />
 
     <EditText
-        android:id="@+id/edBuy"
+        android:id="@+id/edUpdBuy"
         android:layout_width="match_parent"
         android:layout_height="56dp"
         android:layout_margin="16dp"
         android:hint="Enter buy price"
-        app:layout_constraintTop_toBottomOf="@+id/edDesc"
+        app:layout_constraintTop_toBottomOf="@+id/edUpdDesc"
         tools:layout_editor_absoluteX="25dp" />
 
     <EditText
-        android:id="@+id/edSell"
+        android:id="@+id/edUpdSell"
         android:layout_width="match_parent"
         android:layout_height="56dp"
         android:layout_margin="16dp"
         android:hint="Enter sell price"
-        app:layout_constraintTop_toBottomOf="@+id/edBuy"
+        app:layout_constraintTop_toBottomOf="@+id/edUpdBuy"
         tools:layout_editor_absoluteX="25dp" />
 
     <Button
-        android:id="@+id/btnAdd"
+        android:id="@+id/btnUpdate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="40dp"
-        android:text="Add"
+        android:text="Update"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/edSell" />
+        app:layout_constraintTop_toBottomOf="@+id/edUpdSell" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -28,7 +28,30 @@
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="ro.cojocar.dan.recyclerview.ItemListActivity" />
+
         </activity>
+        <activity android:name=".ItemAddActivity"
+            android:label="Watchlist Add"
+            android:theme="@style/AppTheme.NoActionBar">
+        <meta-data
+        android:name="android.support.PARENT_ACTIVITY"
+        android:value="ro.cojocar.dan.recyclerview.ItemListActivity" />
+        </activity>
+        <activity android:name=".ItemRemoveActivity"
+            android:label="Watchlist Remove"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="ro.cojocar.dan.recyclerview.ItemListActivity" />
+        </activity>
+        <activity android:name=".ItemUpdateActivity"
+            android:label="Update a stock"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="ro.cojocar.dan.recyclerview.ItemAddActivity" />
+        </activity>
+
     </application>
 
 </manifest>

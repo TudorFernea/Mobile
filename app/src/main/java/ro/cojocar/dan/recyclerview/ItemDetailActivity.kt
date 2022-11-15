@@ -15,9 +15,12 @@ class ItemDetailActivity : AppCompatActivity() {
     setContentView(R.layout.activity_item_detail)
     setSupportActionBar(detail_toolbar)
 
-    fab.setOnClickListener { view ->
-      Snackbar.make(view, "Replace with your own detail action", Snackbar.LENGTH_LONG)
-          .setAction("Action", null).show()
+    fab.setOnClickListener {
+        val intent = Intent(this, ItemUpdateActivity::class.java).apply {
+            putExtra(ItemUpdateActivity.ARG_ITEM_SYMB,
+                intent.getStringExtra(ItemUpdateActivity.ARG_ITEM_SYMB))
+        }
+        startActivity(intent)
     }
 
     // Show the Up button in the action bar.

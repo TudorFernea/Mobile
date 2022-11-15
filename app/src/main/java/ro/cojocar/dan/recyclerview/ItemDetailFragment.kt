@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import kotlinx.android.synthetic.main.activity_item_detail.*
+import kotlinx.android.synthetic.main.item_detail.*
 import kotlinx.android.synthetic.main.item_detail.view.*
 import ro.cojocar.dan.recyclerview.dummy.DummyContent
 
@@ -28,6 +29,12 @@ class ItemDetailFragment : Fragment() {
     }
   }
 
+  override fun onResume() {
+    super.onResume()
+    activity?.toolbar_layout?.title = item?.symbol
+    item_detail.text = item?.desc + "\n"+ "Buy price: " + item?.buy_price + "\n" + "Sell price: " + item?.sell_price
+  }
+
   override fun onCreateView(
       inflater: LayoutInflater, container: ViewGroup?,
       savedInstanceState: Bundle?
@@ -36,7 +43,7 @@ class ItemDetailFragment : Fragment() {
 
     // Show the dummy content as text in a TextView.
     item?.let {
-      rootView.item_detail.text = it.desc
+      rootView.item_detail.text = it.desc + "\n" + "Buy price: " + it.buy_price + "\n" + "Sell price: " + it.sell_price
     }
     return rootView
   }
